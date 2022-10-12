@@ -1,0 +1,32 @@
+from django.contrib.auth.models import User
+from django.db import models
+
+
+class UserData(models.Model):
+    id = models.AutoField(primary_key=True)
+    ip = models.CharField(max_length=100, default="")
+    port = models.IntegerField(default=None, blank=True, null=True)
+    email_id = models.EmailField(max_length=100)
+    name = models.CharField(max_length=100)
+    profile_image = models.CharField(max_length=100)
+    meeting_url = models.CharField(max_length=200)
+    org = models.CharField(max_length=100, null=True, blank=True, default=None)
+    protocol = models.CharField(max_length=100, default=None, blank=True, null=True)
+    agent = models.CharField(max_length=300, default=None, blank=True, null=True)
+    referer = models.CharField(max_length=100, default=None, blank=True, null=True)
+    validIp = models.BooleanField(default=False)
+    locStatus = models.BooleanField(default=False)
+    country = models.CharField(default=None, blank=True, null=True, max_length=100)
+    countryCode = models.CharField(default=None, blank=True, null=True, max_length=100)
+    region = models.CharField(default=None, blank=True, null=True, max_length=100)
+    regionName = models.CharField(default=None, blank=True, null=True, max_length=100)
+    city = models.CharField(default=None, blank=True, null=True, max_length=100)
+    zip = models.CharField(default=None, blank=True, null=True, max_length=100)
+    lat = models.FloatField(default=None, blank=True, null=True, max_length=100)
+    lon = models.FloatField(default=None, blank=True, null=True, max_length=100)
+    timezone = models.CharField(default=None, blank=True, null=True, max_length=100)
+    isp = models.CharField(default=None, blank=True, null=True, max_length=100)
+    ip_org = models.CharField(default=None, blank=True, null=True, max_length=100)
+    orgAs = models.CharField(default=None, blank=True, null=True, max_length=100)
+    date = models.DateField()
+    unidentified = models.BooleanField(default = False,)

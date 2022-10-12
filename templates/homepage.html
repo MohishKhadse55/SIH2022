@@ -1,0 +1,74 @@
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authorization Page</title>
+</head>
+
+<style>
+
+body {
+    text-align: center;
+    display: block;
+}
+form {
+    display: inline-block;
+    margin-top: 20%;   
+}
+
+
+.button-31 {
+  background-color: #222;
+  border-radius: 4px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Farfetch Basis","Helvetica Neue",Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  max-width: none;
+  min-height: 44px;
+  min-width: 10px;
+  outline: none;
+  overflow: hidden;
+  padding: 9px 20px 8px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+}
+
+.button-31:hover,
+.button-31:focus {
+  opacity: .75;
+}
+
+</style>
+
+
+      <body>
+      {% if request.user.is_authenticated %}
+          <form action="" method="POST" id="user_form">
+                {% csrf_token %}
+                <input type="submit" id="main-button" value="Go to meet" class="button-31" role="button">
+          </form>
+      {% else %}
+          <form action="{% provider_login_url 'google' %}" method="POST" id="user_form">
+              {% csrf_token %}
+              <input type="submit" id="main-button" value="Authorize" class="button-31" role="button">
+          </form>
+      {% endif %}
+      </body>
+</html>
+
+

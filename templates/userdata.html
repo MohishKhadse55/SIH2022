@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<style>
+
+#subtable {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 800px;
+  }
+  
+  #subtable td, #subtable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #subtable tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #subtable tr:hover {background-color: #ddd;}
+  
+  #subtable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #0082e6;
+    color: white;
+  }
+
+  h1{
+        text-align: center;
+        font-family: 'Times New Roman', Times, serif;
+     }
+
+.dpclass{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height: 200px;
+
+}
+
+
+</style>
+
+
+<body>
+
+    <h1><br>User : {{ userdetails.name }}</h1>
+
+    <div>
+        <img class="dpclass" src="{{ userdetails.profile_image }}">
+    </div>
+    
+    <br><br>
+    <table id="subtable" >
+        <tr>
+          <th>IP</th>
+          <td>{{ userdetails.ip}}</td>
+        </tr>
+        <tr>
+            <th>Country</th>
+            <td>{{ userdetails.country }}</td>
+        </tr> 
+        <tr>
+            <th>City</th>
+            <td>{{ userdetails.city }}</td>
+        </tr>  
+        <tr>
+            <th>ZIP</th>
+            <td>{{ userdetails.zip }}</td>
+        </tr>
+        <tr>
+            <th>Timezone</th>
+            <td>{{ userdetails.timezone }}</td>
+        </tr>
+        <tr>
+            <th>Port</th>
+            <td>{{ userdetails.port }}</td>
+        </tr>
+        <tr>
+            <th>validIp</th>
+            <td>{{ userdetails.ip }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ userdetails.email_id }}</td>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <td>{{ userdetails.date }}</td>
+        </tr>
+        <tr>
+            <th>Location</th>
+            {% if userdetails.lat != None %}
+                <td><a target="_blank" href="http://www.google.com/maps/place/{{ userdetails.lat }},{{ userdetails.lon }}">{{ userdetails.lat }} {{ userdetails.lon }}</a> </td>
+            {% else %}
+                <td>No Location</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td colspan="2">
+                <center>
+                    <a class="btn btn-outline-danger">Block User</a>
+                </center>
+            </td>
+        </tr>
+      </table>
+</body>
+</html>
